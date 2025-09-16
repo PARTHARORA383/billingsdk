@@ -1,6 +1,10 @@
 "use client"
 
-import { CodeBlock, CodeBlockTab, CodeBlockTabs, CodeBlockTabsList, CodeBlockTabsTrigger, Pre } from "fumadocs-ui/components/codeblock"
+import { CodeBlock, CodeBlockTab, CodeBlockTabs, CodeBlockTabsList, CodeBlockTabsTrigger } from "fumadocs-ui/components/codeblock"
+import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
+
+
+
 
 export default function QuickIntegration() {
 
@@ -14,8 +18,8 @@ export default function QuickIntegration() {
         <p className=" mt-4 text-muted-foreground mb-12 max-w-xl mx-auto tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200 text-center">
           Beautiful, customizable billing components that save you development
           time and effort.
-        </p> 
-     
+        </p>
+
         <div className="flex flex-col gap-y-6">
 
           <Installation />
@@ -27,6 +31,8 @@ export default function QuickIntegration() {
   )
 }
 
+
+
 function StepNumber({ num }: { num: number }) {
   return (
     <div className="relative flex items-center justify-center border mb-4 w-10 h-10 rounded-full">
@@ -35,6 +41,38 @@ function StepNumber({ num }: { num: number }) {
       </span>
     </div>
   );
+}
+
+function DynamicCodeBlockRender({ code }: { code: string }) {
+
+  return (
+<div className="w-full max-w-full min-w-0">
+
+    <DynamicCodeBlock lang="tsx" options={{
+      themes: {
+        light: 'catppuccin-latte',
+        dark: 'catppuccin-mocha',
+      },
+      components: {
+        pre: (props) => (
+          <pre
+          {...props}
+          className="rounded-lg lg:p-2 px-4 text-[12px] lg:text-[14px] w-full lg:max-w-full overflow-x-auto"
+          />
+        ),
+        code: (props) => (
+          <code
+          {...props}
+          className="font-sans "
+          />
+        ),
+      },
+      
+    }} code={code}
+    
+    />
+    </div>
+  )
 }
 
 
@@ -57,18 +95,22 @@ export function Installation() {
 
             {/* Tab content */}
             <CodeBlockTab value="npm" className="font-sans">
-              <Pre className="font-sans lg:text-[15px] px-2">npx shadcn@latest add @billingsdk/pricing-table-one</Pre>
+
+              <DynamicCodeBlockRender code={'npx shadcn@latest add @billingsdk/pricing-table-one'} />
             </CodeBlockTab>
 
             <CodeBlockTab value="pnpm" className="font-sans">
-              <Pre className="font-sans lg:text-[15px] px-2">pnpm dlx shadcn@latest add @billingsdk/pricing-table-one</Pre>
+
+              <DynamicCodeBlockRender code={'pnpm dlx shadcn@latest add @billingsdk/pricing-table-one'} />
             </CodeBlockTab>
 
             <CodeBlockTab value="yarn">
-              <Pre className="lg:text-[15px] font-sans px-2">yarn add @billingsdk/pricing-table-one</Pre>
+
+              <DynamicCodeBlockRender code={'yarn add @billingsdk/pricing-table-one'} />
             </CodeBlockTab>
             <CodeBlockTab value="bun">
-              <Pre className="lg:text-[15px] font-sans px-2">bunx shadcn@latest add @billingsdk/pricing-table-one</Pre>
+
+              <DynamicCodeBlockRender code={'bunx shadcn@latest add @billingsdk/pricing-table-one'} />
             </CodeBlockTab>
           </CodeBlockTabs>
 
@@ -84,17 +126,21 @@ export function Installation() {
 
             {/* Tab content */}
             <CodeBlockTab value="npm" className="font-sans">
-              <Pre className="font-sans lg:text-[15px] px-2">npx shadcn@latest add @billingsdk/pricing-table-one</Pre>
+
+              <DynamicCodeBlockRender code="npx shadcn@latest add @billingsdk/pricing-table-one" />
             </CodeBlockTab>
             <CodeBlockTab value="pnpm" className="font-sans">
-              <Pre className="font-sans lg:text-[15px] px-2">pnpm dlx @billingsdk/cli add pricing-table-one</Pre>
+
+              <DynamicCodeBlockRender code="pnpm dlx @billingsdk/cli add pricing-table-one" />
             </CodeBlockTab>
 
             <CodeBlockTab value="yarn">
-              <Pre className="lg:text-[15px] font-sans px-2">yarn add @billingsdk/pricing-table-one</Pre>
+
+              <DynamicCodeBlockRender code="yarn add @billingsdk/pricing-table-one" />
             </CodeBlockTab>
             <CodeBlockTab value="bun">
-              <Pre className="lg:text-[15px] font-sans px-2">bunx @billingsdk/cli add pricing-table-one</Pre>
+
+              <DynamicCodeBlockRender code="bunx @billingsdk/cli add pricing-table-one" />
             </CodeBlockTab>
           </CodeBlockTabs>
         </CodeBlock>
@@ -126,33 +172,35 @@ export function Theme() {
     <div className="flex lg:flex-row-reverse flex-col-reverse lg:items-start items-center justify-between md:gap-6">
 
       {/* code section */}
-      <div className="lg:min-w-2xl lg:max-w-2xl px-4 w-full lg:px-0 ">
-        <CodeBlock allowCopy={true} keepBackground={false} className="bg-transparent flex-wrap">
+      <div className=" lg:min-w-[42rem] lg:max-w-2xl  w-full lg:px-0 ">
+        <CodeBlock keepBackground={false} className="bg-transparent">
 
           {/* Code Block */}
           <div className="lg:text-[15px] mx-4 mb-2 text-[var(--color-fd-primary)]">src/components/pricing-table-one-minimal-demo.tsx</div>
-          <div className="bg-muted mx-4 rounded-md">
-            <Pre className="font-sans lg:text-[15px] px-2 py-2">
-              {`"use client"
+          <div className="bg-muted mx-4 rounded-md ">
+
+            <div className="">
+              <DynamicCodeBlockRender code={`"use client"
 import { PricingTableOne } from "@/components/billingsdk/pricing-table-one"
 import { plans } from "@/lib/billingsdk-config"
-
-export function PricingTableOneMinimalDemo() {
-  return (
-    <>
+  
+  export function PricingTableOneMinimalDemo() {
+    return (
+      <>
       <PricingTableOne 
-        plans={plans}
-        title="Pricing"
-        description="Choose the plan that's right for you"
-        onPlanSelect={(planId) => console.log('Selected plan:', planId)}
-        size="small" // small, medium, large
-        theme="minimal" // minimal or classic
-        className="w-full"
+      plans={plans}
+      title="Pricing"
+      description="Choose the plan that's right for you"
+      onPlanSelect={(planId) => console.log('Selected plan:', planId)}
+      size="small" // small, medium, large
+      theme="minimal" // minimal or classic
+      className="w-full"
       />
-    </>
-  )
-}`}
-            </Pre>
+      </>
+    )
+  }`} />
+            </div>
+
           </div>
         </CodeBlock>
       </div>
@@ -188,27 +236,26 @@ export function Usage() {
           {/* Imports Block */}
           <div className="lg:text-[15px] mx-4 mb-2 text-[var(--color-fd-primary)]">Imports</div>
           <div className="bg-muted mx-4 mb-6 rounded-md">
-            <Pre className="font-sans lg:text-[15px] px-2 py-2">
-              {`import { PricingTableOne } from "@/components/billingsdk/pricing-table-one";
-import { plans } from "@/lib/billingsdk-config";`}
-            </Pre>
+
+
+            <DynamicCodeBlockRender code={`import { PricingTableOne } from "@/components/billingsdk/pricing-table-one";
+import { plans } from "@/lib/billingsdk-config";`} />
           </div>
 
           {/* Code Block */}
           <div className="lg:text-[15px] mx-4 mb-2 text-[var(--color-fd-primary)]">Code</div>
           <div className="bg-muted mx-4 rounded-md">
-            <Pre className="font-sans lg:text-[15px] px-2 py-2">
-              {`<PricingTableOne 
+
+            <DynamicCodeBlockRender code={`<PricingTableOne 
   plans={plans}
   title="Pricing"
   description="Choose the plan that's right for you"
   onPlanSelect={(planId) => console.log('Selected plan:', planId)}
   size="small" // small, medium, large
   theme="classic" // minimal or classic
-/>`}
-            </Pre>
-          </div>
+/>`} />
 
+          </div>
         </CodeBlock>
       </div>
 
@@ -222,7 +269,7 @@ import { plans } from "@/lib/billingsdk-config";`}
           <h3 className="text-lg font-semibold mb-2">Usage</h3>
 
           {/* Small description */}
-          <p className="text-sm text-muted-foreground max-w-xs">
+          <p className="text-sm text-muted-foreground max-w-[20rem]">
             Import the component and add it to your project. Customize props like <code>plans</code>, <code>size</code>, and <code>theme</code>.
           </p>
         </div>

@@ -19,7 +19,7 @@ export default function Features() {
       <h2 className="text-3xl  font-display md:text-5xl font-medium text-primary animate-in fade-in slide-in-from-bottom-4 duration-1000">
         Why choose BillingSDK?
       </h2>
-      <p className=" mt-4 text-muted-foreground mb-12 max-w-xl mx-auto tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200 text-center">
+      <p className=" mt-4 text-muted-foreground mb-12 max-w-xl mx-auto tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200 text-center lg:text-lg">
         Beautiful, customizable billing components that save you development
         time and effort.
       </p>
@@ -70,7 +70,7 @@ function EasyCodeIntegration() {
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <h2 className="md:text-[17px]">Easily Integrates with your system</h2>
-        <h2 className="md:text-[16px] text-muted-foreground mt-1">
+        <h2 className="text-[14px] md:text-[16px] text-muted-foreground mt-1">
          It’s built on the shadcn ecosystem—code at your doorstep with just one command
         </h2>
       </motion.div>
@@ -136,7 +136,7 @@ function EasyCodeIntegration() {
             />
           </svg>
 
-          <div className="md:text-[17px] ml-2">
+          <div className="text-[15px] md:text-[17px] ml-2">
             npx shadcn@latest add @billingsdk/pricing-table-one
           </div>
         </motion.div>
@@ -216,8 +216,8 @@ function OpenSourceGithub() {
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <h2>Open Source</h2>
-        <h3 className="text-muted-foreground">
+        <h2 className="md:text-[17px]">Open Source</h2>
+        <h3 className="text-[14px] md:text-[16px] text-muted-foreground">
           Access the full source code, contribute and customize to your needs.
         </h3>
       </motion.div>
@@ -227,53 +227,42 @@ function OpenSourceGithub() {
 
 
 
-
 function FastDevelopment() {
   return (
-    <div className="relative h-full w-full overflow-hidden pt-4 px-4">
-      {/* Heading */}
-
-
+    <div className="relative h-full w-full overflow-hidden py-4 px-4 ">
       {/* Visual Card */}
-
-      <div className="h-36 mb-10">
-
+      <div className="w-full mb-6">
         <Cover className="w-full h-full">
-
           <motion.div
-            className="relative  h-36 mt-4 rounded-lg shadow-lg overflow-hidden flex w-full text-lg px-12 items-center justify-center"
-
+            className="relative  w-full h-36 mt-4 rounded-lg shadow-lg overflow-hidden flex justify-center items-center text-lg"
           >
-            Faster Developement
-            <motion.div
-              className="flex items-center gap-4"
+            <p>Faster Development</p>
+            {/* <motion.div
+              className="w-full flex items-center gap-4"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-            >
-
-            </motion.div>
-
+            /> */}
           </motion.div>
         </Cover>
       </div>
 
+      {/* Description */}
       <motion.div
         initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}
+        className="w-full"
       >
-
-        <h2 className="md:text-[16px] text-muted-foreground mt-4">
+        <h2 className="w-full text-[14px] md:text-[16px] text-muted-foreground mt-4">
           Ship features faster with prebuilt components and a streamlined workflow.
         </h2>
       </motion.div>
     </div>
   );
 }
-
 
 
 
@@ -306,7 +295,7 @@ function SleekComponents() {
             <div className="w-5 h-5 border rounded-full bg-muted flex items-center justify-center">
               <div className="h-3 w-3 rounded-full bg-gradient-to-br from-white to-yellow-500"></div>
             </div>
-            <h2 className="md:text-[17px] flex items-center gap-2 text-muted-foreground">
+            <h2 className="text-[15px] md:text-[16px] flex items-center gap-2 text-muted-foreground">
               <component.icon className="size-5" /> {component.label}
             </h2>
           </motion.div>

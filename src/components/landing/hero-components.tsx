@@ -14,9 +14,9 @@ import { FiSettings } from "react-icons/fi";
 import { BsBell } from "react-icons/bs";
 import { BiBarChartAlt2, BiArrowToTop } from "react-icons/bi";
 import { MdClose } from "react-icons/md";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
-import { HiOutlineMenu } from "react-icons/hi";
+import { PanelRight } from "lucide-react";
 
 interface ComponentsProps {
   id: string;
@@ -32,7 +32,7 @@ export function HeroComponentsShowcase() {
 
   // Detect mobile screen
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -126,30 +126,38 @@ export function HeroComponentsShowcase() {
           {isMobile ? (
             <>
               {/* Mobile Hamburger */}
-              <div className="flex justify-between items-center p-4 border-b">
+              <div className="flex justify-between items-center p-4 border-b ">
                 <div className="flex items-center gap-2">
                   <Image src="/logo/logo-dodo.svg" alt="Billing SDK" width={28} height={28} />
                   <span className="text-3xl font-display">/</span>
                   <Image src="/logo/Logo.svg" alt="Billing SDK" width={120} height={120} />
                 </div>
                 <button onClick={() => setShowMobileMenu(!showMobileMenu)}>
-                  <HiOutlineMenu size={28} />
+         <PanelRight size={22} className="text-neutral-200" />
                 </button>
               </div>
+              <AnimatePresence>
+
               {showMobileMenu && (
-                <div className="flex flex-col bg-background border-b">
+                <motion.div 
+                initial = {{x : "-100px" , opacity : "0"}}
+                animate = {{ x: 0  , opacity : 1}}
+                exit={{x : '-100px' , opacity : 0}}
+                transition={{duration : 0.3 , ease : "easeInOut"}}
+                className="flex flex-col border-b">
                   {components.map((component) => (
                     <button
-                      key={component.id}
-                      className={`flex items-center gap-2 p-3 text-left w-full ${selectedTab === component.id ? "bg-fd-primary/10" : ""}`}
-                      onClick={() => { setSelectedTab(component.id); setShowMobileMenu(false); }}
+                    key={component.id}
+                    className={`flex items-center gap-2 p-1 text-left w-full ${selectedTab === component.id ? "bg-fd-primary/10" : ""}`}
+                    onClick={() => { setSelectedTab(component.id); setShowMobileMenu(false); }}
                     >
                       <component.icon />
                       {component.label}
                     </button>
                   ))}
-                </div>
+                </motion.div>
               )}
+              </AnimatePresence>
               <div className="p-4">
                 {components.find((c) => c.id === selectedTab)?.component}
               </div>

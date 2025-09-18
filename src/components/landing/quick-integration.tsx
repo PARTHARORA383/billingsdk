@@ -15,7 +15,7 @@ export default function QuickIntegration() {
         <h2 className="text-3xl  font-display md:text-5xl font-medium text-primary animate-in fade-in slide-in-from-bottom-4 duration-1000">
           Quick Integration
         </h2>
-        <p className=" mt-4 text-muted-foreground mb-12 max-w-xl mx-auto tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200 text-center">
+        <p className=" mt-4 text-muted-foreground mb-12 max-w-xl mx-auto tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200 text-center lg:text-lg">
           Beautiful, customizable billing components that save you development
           time and effort.
         </p>
@@ -46,31 +46,31 @@ function StepNumber({ num }: { num: number }) {
 function DynamicCodeBlockRender({ code }: { code: string }) {
 
   return (
-<div className="w-full max-w-full min-w-0">
+    <div className="w-full max-w-full min-w-0">
 
-    <DynamicCodeBlock lang="tsx" options={{
-      themes: {
-        light: 'catppuccin-latte',
-        dark: 'catppuccin-mocha',
-      },
-      components: {
-        pre: (props) => (
-          <pre
-          {...props}
-          className="rounded-lg lg:p-2 px-4 text-[12px] lg:text-[14px] w-full lg:max-w-full overflow-x-auto"
-          />
-        ),
-        code: (props) => (
-          <code
-          {...props}
-          className="font-sans "
-          />
-        ),
-      },
-      
-    }} code={code}
-    
-    />
+      <DynamicCodeBlock lang="tsx" options={{
+        themes: {
+          light: 'catppuccin-latte',
+          dark: 'catppuccin-mocha',
+        },
+        components: {
+          pre: (props) => (
+            <pre
+              {...props}
+              className="rounded-lg lg:p-2 px-1 py-2 text-[12px] lg:text-[14px]  overflow-x-scroll max-w-sm md:max-w-full "
+            />
+          ),
+          code: (props) => (
+            <code
+              {...props}
+              className="font-sans"
+            />
+          ),
+        },
+
+      }} code={code}
+
+      />
     </div>
   )
 }
@@ -81,7 +81,7 @@ export function Installation() {
     <div className="flex md:flex-row flex-col-reverse lg:items-start items-center justify-between">
 
       {/* Left side code section */}
-      <div className="lg:min-w-2xl lg:max-w-2xl md:px-0 px-4">
+      <div className="max-w-sm sm:max-w-md lg:min-w-[42rem] lg:max-w-2xl md:px-0 px-4">
         <CodeBlock allowCopy={false} keepBackground={false} className="bg-transparent ">
           <div className="lg:text-[15px] mx-4 text-[var(--color-fd-primary)]">For Shadcn CLI</div>
           <CodeBlockTabs defaultValue="npm" className="bg-muted mx-4 mb-6 mt-2">
@@ -154,7 +154,7 @@ export function Installation() {
 
           {/* Heading */}
 
-          <h3 className="text-lg font-semibold mb-2">Install Components</h3>
+          <h3 className="text-[17px] md:text-lg font-semibold mb-2">Install Components</h3>
 
           {/* Small description */}
           <p className="text-sm text-muted-foreground max-w-xs">
@@ -169,18 +169,18 @@ export function Installation() {
 
 export function Theme() {
   return (
-    <div className="flex lg:flex-row-reverse flex-col-reverse lg:items-start items-center justify-between md:gap-6">
+    <div className="flex md:flex-row-reverse flex-col-reverse lg:items-start items-center justify-between md:gap-6 ">
 
       {/* code section */}
-      <div className=" lg:min-w-[42rem] lg:max-w-2xl  w-full lg:px-0 ">
+      <div className=" max-w-sm sm:max-w-md lg:min-w-[42rem] lg:max-w-2xl  w-full mx-2 lg:px-0 ">
         <CodeBlock keepBackground={false} className="bg-transparent">
 
           {/* Code Block */}
-          <div className="lg:text-[15px] mx-4 mb-2 text-[var(--color-fd-primary)]">src/components/pricing-table-one-minimal-demo.tsx</div>
+          <div className="text-[12.5px] lg:text-[15px] mx-4 mb-2 text-[var(--color-fd-primary)]">src/components/pricing-table-one-minimal-demo.tsx</div>
           <div className="bg-muted mx-4 rounded-md ">
 
-            <div className="">
-              <DynamicCodeBlockRender code={`"use client"
+
+            <DynamicCodeBlockRender code={`"use client"
 import { PricingTableOne } from "@/components/billingsdk/pricing-table-one"
 import { plans } from "@/lib/billingsdk-config"
   
@@ -199,7 +199,7 @@ import { plans } from "@/lib/billingsdk-config"
       </>
     )
   }`} />
-            </div>
+
 
           </div>
         </CodeBlock>
@@ -211,10 +211,10 @@ import { plans } from "@/lib/billingsdk-config"
         <StepNumber num={2} />
         <div className="md:flex flex-col">
           {/* Heading */}
-          <h3 className="text-lg font-semibold mb-2">Theme</h3>
+          <h3 className="text-[17px] md:text-lg font-semibold mb-2">Theme</h3>
 
           {/* Small description */}
-          <p className="text-sm text-muted-foreground max-w-2xs">
+          <p className="text-sm text-muted-foreground max-w-xs lg:max-w-2xs">
             Switch between <code>minimal</code> and <code>classic</code> themes to customize how the pricing table looks in your project.
           </p>
         </div>
@@ -230,7 +230,7 @@ export function Usage() {
     <div className="flex md:flex-row flex-col-reverse lg:items-start items-center justify-between ">
 
       {/* Left side code section */}
-      <div className="lg:min-w-2xl lg:max-w-2xl">
+      <div className="max-w-sm sm:max-w-md lg:min-w-2xl lg:max-w-2xl">
         <CodeBlock allowCopy={true} keepBackground={false} className="bg-transparent ">
 
           {/* Imports Block */}
@@ -266,7 +266,7 @@ import { plans } from "@/lib/billingsdk-config";`} />
 
         <div className="md:flex flex-col">
           {/* Heading */}
-          <h3 className="text-lg font-semibold mb-2">Usage</h3>
+          <h3 className="text-[17px] md:text-lg font-semibold mb-2">Usage</h3>
 
           {/* Small description */}
           <p className="text-sm text-muted-foreground max-w-[20rem]">

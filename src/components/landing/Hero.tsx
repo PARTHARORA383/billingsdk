@@ -15,7 +15,7 @@ const Hero = () => {
 
       <DiagonalLightBeams />
       <motion.div
-        className="relative z-10 pt-[calc(70vh/4)] px-6"
+        className="relative z-10 pt-[calc(70vh/4)] px-1 lg:px-6"
         initial="hidden"
         animate="visible"
       >
@@ -100,7 +100,7 @@ function SubHeader() {
   return (
     <>
       <motion.p
-        className="text-neutral-100/80 text-sm sm:text-lg max-w-2xl mx-auto tracking-tighter"
+        className="text-neutral-100/80  sm:text-lg max-w-2xl mx-auto tracking-tighter"
         variants={{
           hidden: { opacity: 0, y: 20 },
           visible: { opacity: 1, y: 0 },
@@ -121,7 +121,7 @@ function CTA() {
     <>
       {/* CTA Buttons */}
       <motion.div
-        className="flex flex-col sm:flex-row gap-4 justify-center items-center my-8 max-w-md mx-auto"
+        className="flex flex-row gap-4 justify-center items-center my-8 w-full lg:max-w-md mx-auto"
         variants={{
           hidden: { opacity: 0, y: 20 },
           visible: { opacity: 1, y: 0 },
@@ -130,7 +130,7 @@ function CTA() {
       >
         <Button
           className="relative isolate inline-flex items-center justify-center 
-             overflow-hidden rounded-md px-6 py-3 text-sm font-semibold 
+             overflow-hidden rounded-md lg:px-6 lg:py-3 text-sm font-semibold 
              bg-gray-100 text-gray-800
              shadow-[inset_4px_4px_8px_rgba(0,0,0,0.1),inset_-4px_-4px_8px_rgba(255,255,255,0.7)]
              ring-1 ring-gray-200
@@ -157,7 +157,7 @@ function ProductHuntBadge() {
   return (
     <>
 
-      <div className="flex justify-center items-center w-full">
+      <div className="flex justify-center items-center w-full mb-2 md:mb-0">
         <a
           className="w-fit"
           href="https://www.producthunt.com/products/dodo-payments?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_source=badge-billing&#0045;sdk&#0045;2"
@@ -166,9 +166,9 @@ function ProductHuntBadge() {
           <img
             src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1011707&theme=light&period=daily&t=1757072846066"
             alt="Billing&#0032;SDK - Open&#0032;source&#0032;billing&#0032;UI&#0032;components | Product Hunt"
-            style={{ width: "230px", height: "46px" }}
-            width="250"
-            height="50"
+            // style={{ width: "230px", height: "46px" }}
+            className=" w-[200px] h-[38px] lg:w-[230px] lg:h-[46px]"
+           
           />
         </a>
       </div>
